@@ -14,6 +14,7 @@ public class FullScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // Bu bir comment'tir
+        // kolay gelsin sevgili meyra...
     }
 }
