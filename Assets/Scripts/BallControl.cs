@@ -8,20 +8,22 @@ public class BallControl : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        ResetPosition();
+        StartingForce();
     }
-    void StartingForce()
+    public void StartingForce()
     {
-        GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(3, 7), Random.Range(3, 7)), ForceMode2D.Impulse);
+        GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(3, 7), Random.Range(3, 7)), 
+            ForceMode2D.Impulse);
     }
     public void GameOver()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
         Debug.Log("Game OVER!");
 
     }
     public void ResetPosition()
     {
+       
         gameObject.transform.position = rb2d.position = Vector3.zero;
 
         StartingForce();
@@ -29,10 +31,24 @@ public class BallControl : MonoBehaviour
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "DeathZone")
-        {
+        {           
+              GameOver();
             
-            GameOver();
-            ResetPosition();
+        }
+    }
+
+    public void RestartLevel()
+    {
+        gameObject.SetActive(true);
+        ResetPosition();
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+       
+            RestartLevel();
+            
         }
     }
 }
