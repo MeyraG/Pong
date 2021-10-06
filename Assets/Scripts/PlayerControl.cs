@@ -8,10 +8,17 @@ public class PlayerControl : MonoBehaviour
     
     public float speed;
 
+
     void Start()
     {
       rb2d = GetComponent<Rigidbody2D>();
     }
+
+    public void ResetPositionPaddle()
+    {
+        transform.position = new Vector3(0, -4.4f, 0);        
+    }
+
 
 
     void Update()
