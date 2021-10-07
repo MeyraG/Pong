@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - DeathZone
   - Ball
+  - ScoreZone1
+  - ScoreZone2
   layers:
   - Default
   - TransparentFX

@@ -5,6 +5,7 @@ using UnityEngine;
 public class BallControl : MonoBehaviour
 {
     Rigidbody2D rb2d;
+
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -12,7 +13,7 @@ public class BallControl : MonoBehaviour
     }
     public void StartingForce()
     {
-        rb2d.AddForce(new Vector2(Random.Range(3, 7), Random.Range(3, 7)),ForceMode2D.Impulse);
+        rb2d.AddForce(new Vector2(Random.Range(4, 7), Random.Range(4, 7)),ForceMode2D.Impulse);
     }
     public void GameOver()
     {
@@ -27,11 +28,9 @@ public class BallControl : MonoBehaviour
     }
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "DeathZone")
+        if (collision.gameObject.tag == "ScoreZone1" || collision.gameObject.tag == "ScoreZone2")
         {           
-              GameOver();          
+              GameOver();
         }
     }
-
-    
 }

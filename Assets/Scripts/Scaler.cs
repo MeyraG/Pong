@@ -11,7 +11,6 @@ public class Scaler : MonoBehaviour
         ScaleScreenSize();
     }
 
-    
     void ScaleScreenSize()
     {
         //Hedef Cihazın Çözünürlüğünü Alma
