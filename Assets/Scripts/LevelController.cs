@@ -24,6 +24,7 @@ public class LevelController : MonoBehaviour
 
     public void RestartLevel()
     {
+        levelController.isPlaying = true;
         ball.ResetPosition();
         player1.ResetPositionPlayer1();
         player2.ResetPositionPlayer2();
@@ -31,13 +32,15 @@ public class LevelController : MonoBehaviour
 
     public void RoundOver()
     {
-        isPlaying = false;
-        Debug.Log("Round Over");
-        InvokeRepeating("NewRound", 1.2f, 0);
+        isPlaying = false;       
 
         if (currentRound == totalRound)
         {
             AllGameOver();
+        }
+        else
+        {
+            Invoke("NewRound", 1.2f);
         }
     }
 
@@ -48,11 +51,9 @@ public class LevelController : MonoBehaviour
     }
 
     void AllGameOver()
-    {
-        gameObject.SetActive(false);
-        levelController.isPlaying = false;
+    {   
+        isPlaying = false;
         currentRound = 0;
-        CancelInvoke();
 
         if (player1.score > player2.score)
         {
@@ -66,9 +67,15 @@ public class LevelController : MonoBehaviour
 
     void Update()
     {
+        Replay();
+    }
+
+    public void Replay()
+    {
         if (Input.GetKeyDown(KeyCode.R))
         {
             RestartLevel();
+            gameOverText.gameObject.SetActive(false);
         }
     }
 }

@@ -6,6 +6,7 @@ public class BallControl : MonoBehaviour
 {
     Rigidbody2D rb2d;
     LevelController levelController;
+    public float speed;
     
     void Start()
     {
@@ -13,17 +14,19 @@ public class BallControl : MonoBehaviour
         StartingForce();
         levelController = GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>();
     }
+
     public void StartingForce()
     {
-        rb2d.AddForce(new Vector2(Random.Range(4, 7), Random.Range(4, 7)),ForceMode2D.Impulse);
+        Vector2 direction = new Vector2(Random.Range(3, 5), Random.Range(3, 5)).normalized;
+        rb2d.AddForce(direction * speed, ForceMode2D.Impulse);
     }
+
     public void GameOver()
-    {
-       
+    {       
         gameObject.SetActive(false);
+        rb2d.velocity = Vector2.zero;
         levelController.isPlaying = false;
         levelController.RoundOver();
-
     }
     public void ResetPosition()
     {
