@@ -6,16 +6,29 @@ using UnityEngine.UI;
 public class ScoreControl : MonoBehaviour
 {
     public Text scoreText;
-    int score;
+   
+    LevelController levelController;
 
+    public bool isPlayer1;
+    
     void Start()
     {
-        score = 0;
+       
+        levelController = GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>();
+      
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        score++;
-        scoreText.text = score.ToString();
+        if (isPlayer1)
+        {
+            levelController.player1.score++;
+            scoreText.text = levelController.player1.score.ToString();
+        }
+        else
+        {
+            levelController.player2.score++;
+            scoreText.text = levelController.player2.score.ToString();
+        }      
     }
 }

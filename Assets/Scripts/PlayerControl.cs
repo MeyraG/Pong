@@ -10,15 +10,18 @@ public class PlayerControl : MonoBehaviour
     
     public float speed;
 
+    LevelController levelController;
 
+    public int score;
     void Start()
     {
       rb2d = GetComponent<Rigidbody2D>();
+      levelController = GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>();
     }
 
     public void ResetPositionPlayer1()
     {
-        transform.position = new Vector3(0, -4.4f, 0);        
+        transform.position = new Vector3(0, -4.4f, 0);
     }
 
     public void ResetPositionPlayer2()

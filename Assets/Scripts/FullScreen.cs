@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FullScreen : MonoBehaviour
 {
-   
+    LevelController levelController;
     void Start()
     {
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
@@ -15,6 +15,8 @@ public class FullScreen : MonoBehaviour
         float screenWidth = screenHeight / Screen.height * Screen.width;
         tempScale.x = screenWidth / spriteWidth;
         transform.localScale = tempScale;
+
+        levelController = GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>();
     }
 
     

@@ -5,10 +5,13 @@ using UnityEngine;
 public class Scaler : MonoBehaviour
 {
     public GameObject bgImage;
-    public Camera mainCamera;
+    public Camera mainCamera; 
+    LevelController levelController;
+    
     void Start()
     {
         ScaleScreenSize();
+        levelController = GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>();      
     }
 
     void ScaleScreenSize()

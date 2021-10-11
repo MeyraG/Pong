@@ -5,11 +5,13 @@ using UnityEngine;
 public class BallControl : MonoBehaviour
 {
     Rigidbody2D rb2d;
-
+    LevelController levelController;
+    
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         StartingForce();
+        levelController = GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>();
     }
     public void StartingForce()
     {
@@ -17,12 +19,16 @@ public class BallControl : MonoBehaviour
     }
     public void GameOver()
     {
+       
         gameObject.SetActive(false);
-        Debug.Log("Game OVER!");
+        levelController.isPlaying = false;
+        levelController.RoundOver();
 
     }
     public void ResetPosition()
-    {    
+    {
+        gameObject.SetActive(true);
+        levelController.isPlaying = true;
         gameObject.transform.position = Vector3.zero;
         StartingForce();
     }
@@ -30,7 +36,8 @@ public class BallControl : MonoBehaviour
     {
         if (collision.gameObject.tag == "ScoreZone1" || collision.gameObject.tag == "ScoreZone2")
         {           
-              GameOver();
+            GameOver();
+           
         }
     }
 }
