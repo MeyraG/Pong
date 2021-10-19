@@ -404,7 +404,7 @@ MonoBehaviour:
   ball: {fileID: 1476924804}
   player1: {fileID: 882411649}
   player2: {fileID: 1097254988}
-  totalRound: 2
+  totalRound: 4
   currentRound: 0
   isPlaying: 1
   gameOverText: {fileID: 1961393093}
@@ -520,7 +520,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer1: 1
-  speed: 10
+  speed: 7
+  downSizeDuration: 5
   score: 0
 --- !u!50 &882411650
 Rigidbody2D:
@@ -602,7 +603,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer1: 0
-  speed: 10
+  speed: 7
+  downSizeDuration: 5
   score: 0
 --- !u!61 &1097254989
 BoxCollider2D:
