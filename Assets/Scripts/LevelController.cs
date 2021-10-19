@@ -78,4 +78,26 @@ public class LevelController : MonoBehaviour
             gameOverText.gameObject.SetActive(false);
         }
     }
+
+    
+    /*
+     * Extra ozellikleri level controller uzerinden yapalim.
+     * playerController scriptinde o ozelligin playera ne yapacagi ile ilgili fonksiyon olsun
+     * sonra geri duzeltecek fonksiyon da playerControllerin icinde olsun.
+     * her player yapmak istedigi hamleyi ve kime yapacagini levelController'a soylesin
+     * levelController da ona gore ilgili fonksiyonu cagirsin.
+     *
+     * down size icin bunu yaptim. Bu fonksiyonun playerController da cagrildigi yeri de incele.
+     */
+    public void DownSize(int whichPlayer)
+    {
+        if (whichPlayer == 1)
+        {
+            player1.DownSize();
+        }
+        else if (whichPlayer == 2)
+        {
+            player2.DownSize();
+        }
+    }
 }

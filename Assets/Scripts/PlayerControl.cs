@@ -42,6 +42,7 @@ public class PlayerControl : MonoBehaviour
     {
         transform.position = new Vector3(0, 4.4f, 0);
     }
+
     void Update()
     {
         if (isPlayer1)
@@ -53,47 +54,58 @@ public class PlayerControl : MonoBehaviour
             rb2d.velocity = Vector2.right * Input.GetAxisRaw("Horizontal2") * speed;
         }
 
+
+        if (!isPlayer1 && Input.GetKeyDown(KeyCode.Q)) //Pressed by Player2
+        {
+            /*
+             * Ben (yani bu scriptin bagli oldudu game object) player 2 olduguna gore
+             * player1 in kuculmesini istiyorum. Bunu levelController a soyluyorum o da 
+             * player1'in dowsSize fonksiyonunu cagiriyor.
+             */
+            levelController.DownSize(1);
+        }
+
+        if (isPlayer1 && Input.GetKeyDown(KeyCode.L)) //Pressed by Player1
+        {
+            /*
+             * Ben (yani bu scriptin bagli oldudu game object) player 1 olduguna gore
+             * player2 in kuculmesini istiyorum. Bunu levelController a soyluyorum o da 
+             * player2'in dowsSize fonksiyonunu cagiriyor.
+             */
+            levelController.DownSize(2);
+        }
+
+
+        if (hasAlreadyDownSize && startDowningTime + downSizeDuration < Time.time)
+        {
+            /*
+             * geri buyume sadece zamana bagli oldugu icin playerlarin kim olduklari onemsiz
+             * eger kuculduysem ve 5 saniye gecdiyse beni buyult diyorum
+             * bu 5 saniye inspector'den belirlenebilir olacakti,
+             * yukarida degeri yazmissin buradaki sayiyla 5 yerine onu koymayi unutmussun, koydum ben.
+             */
+            UpSize();
+        }
+    }
+
+
+    public void DownSize()
+    {
+        /*
+         * bu fonksiyon cagrildigi zaman bagli oldugu game objecti kucultecek,
+         * bunun ne zaman cagrilacagini levelController da belirliyoruz 
+         */
         if (!hasAlreadyDownSize)
         {
-            if (!isPlayer1 && Input.GetKeyDown(KeyCode.Q)) //Pressed by Player2
-            {
-                DownSize(isPlayer1);
-            }
-
-            if (isPlayer1 && Input.GetKeyDown(KeyCode.L))  //Pressed by Player1
-            {
-                DownSize(!isPlayer1);
-            }
-        }
-
-        if (hasAlreadyDownSize && startDowningTime + 5 < Time.time)
-        {
-            UpSize(isPlayer1);
-        }
-    }
-
-
-    void DownSize(bool isPlayer1)
-    {
-        startDowningTime = Time.time;
-
-        if (isPlayer1)
-        {
+            startDowningTime = Time.time;
             transform.localScale = transform.localScale / 2;
-            Debug.Log("Küçüldüm");
+            hasAlreadyDownSize = true;
         }
-
-        hasAlreadyDownSize = true;
     }
 
-    void UpSize(bool isPlayer1)
+    private void UpSize()
     {
-        if (isPlayer1)
-        {
-            transform.localScale = transform.localScale * 2;
-        }
-
-
+        transform.localScale = transform.localScale * 2;
         hasAlreadyDownSize = false;
     }
 
