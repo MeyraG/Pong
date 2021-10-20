@@ -8,6 +8,7 @@ TagManager:
   - ScoreZone1
   - ScoreZone2
   - LevelController
+  - ScoreControl
   layers:
   - Default
   - TransparentFX

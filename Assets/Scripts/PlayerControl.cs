@@ -14,7 +14,7 @@ public class PlayerControl : MonoBehaviour
 
     bool hasAlreadyDownSize;
     float startDowningTime;
-    public float downSizeDuration = 5;
+    public float downSizeDuration = 8;
 
     public int score;
 
@@ -42,6 +42,7 @@ public class PlayerControl : MonoBehaviour
     {
         transform.position = new Vector3(0, 4.4f, 0);
     }
+   
 
     void Update()
     {
@@ -58,9 +59,9 @@ public class PlayerControl : MonoBehaviour
         if (!isPlayer1 && Input.GetKeyDown(KeyCode.Q)) //Pressed by Player2
         {
             /*
-             * Ben (yani bu scriptin bagli oldudu game object) player 2 olduguna gore
+             * Ben (yani bu scriptin bagli oldugu game object) player 2 olduguna gore
              * player1 in kuculmesini istiyorum. Bunu levelController a soyluyorum o da 
-             * player1'in dowsSize fonksiyonunu cagiriyor.
+             * player1'in downSize fonksiyonunu cagiriyor.
              */
             levelController.DownSize(1);
         }
@@ -70,7 +71,7 @@ public class PlayerControl : MonoBehaviour
             /*
              * Ben (yani bu scriptin bagli oldudu game object) player 1 olduguna gore
              * player2 in kuculmesini istiyorum. Bunu levelController a soyluyorum o da 
-             * player2'in dowsSize fonksiyonunu cagiriyor.
+             * player2'in downSize fonksiyonunu cagiriyor.
              */
             levelController.DownSize(2);
         }
@@ -86,6 +87,20 @@ public class PlayerControl : MonoBehaviour
              */
             UpSize();
         }
+
+        if (!isPlayer1 && Input.GetKeyDown(KeyCode.Z))
+        {
+            levelController.Rotate(1);
+        }
+        else if (isPlayer1 && Input.GetKeyDown(KeyCode.K))
+        {
+            levelController.Rotate(2);
+        }
+
+        if (hasAlreadyRotated && startDowningTime + downSizeDuration < Time.time)
+        {
+            NotRotate();
+        }
     }
 
 
@@ -98,15 +113,33 @@ public class PlayerControl : MonoBehaviour
         if (!hasAlreadyDownSize)
         {
             startDowningTime = Time.time;
-            transform.localScale = transform.localScale / 2;
+            transform.localScale = transform.localScale / 3;
             hasAlreadyDownSize = true;
         }
     }
 
     private void UpSize()
     {
-        transform.localScale = transform.localScale * 2;
+        transform.localScale = transform.localScale * 3;
         hasAlreadyDownSize = false;
+    }
+
+    bool hasAlreadyRotated;
+
+    public void Rotate()
+    {
+        if (hasAlreadyRotated == false)
+        {
+            startDowningTime = Time.time;
+            transform.rotation = Quaternion.Euler(0, 0, 90);
+            hasAlreadyRotated = true;
+        }
+    }
+
+    void NotRotate()
+    {
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+        hasAlreadyRotated = false;
     }
 
 }

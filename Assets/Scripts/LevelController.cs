@@ -13,13 +13,16 @@ public class LevelController : MonoBehaviour
     public int currentRound;
 
     LevelController levelController;
+    ScoreControl scoreControl;
     public bool isPlaying = true;
 
+    PlayerControl playerControl;
     public Text gameOverText;
 
     private void Start()
     {
         levelController = GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>();
+        scoreControl = GameObject.FindGameObjectWithTag("ScoreControl").GetComponent<ScoreControl>();
     }
 
     public void RestartLevel()
@@ -64,6 +67,7 @@ public class LevelController : MonoBehaviour
             gameOverText.text = "The Winner is Player 2 ";
         }
     }
+    
 
     void Update()
     {
@@ -74,8 +78,10 @@ public class LevelController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
+            scoreControl.ResetScore();
             RestartLevel();
             gameOverText.gameObject.SetActive(false);
+            
         }
     }
 
@@ -98,6 +104,18 @@ public class LevelController : MonoBehaviour
         else if (whichPlayer == 2)
         {
             player2.DownSize();
+        }
+    }
+
+    public void Rotate(int whichPlayer)
+    {
+        if (whichPlayer ==1)
+        {
+            player1.Rotate();
+        }
+        else if (whichPlayer ==2)
+        {
+            player2.Rotate();
         }
     }
 }

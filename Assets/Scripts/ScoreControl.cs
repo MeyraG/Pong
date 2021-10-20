@@ -31,4 +31,12 @@ public class ScoreControl : MonoBehaviour
             scoreText.text = levelController.player2.score.ToString();
         }      
     }
+
+    public void ResetScore()
+    {
+        levelController.player1.score = 0;
+        levelController.player2.score = 0;
+        scoreText.text = levelController.player1.score.ToString();
+        scoreText.text = levelController.player2.score.ToString();
+    }
 }
