@@ -39,8 +39,7 @@ public class BallControl : MonoBehaviour
     {
         if (collision.gameObject.tag == "ScoreZone1" || collision.gameObject.tag == "ScoreZone2")
         {           
-            GameOver();
-           
+            GameOver();         
         }
     }
 }

@@ -56,6 +56,9 @@ public class PlayerControl : MonoBehaviour
         }
 
 
+
+
+
         if (!isPlayer1 && Input.GetKeyDown(KeyCode.Q)) //Pressed by Player2
         {
             /*
@@ -76,17 +79,19 @@ public class PlayerControl : MonoBehaviour
             levelController.DownSize(2);
         }
 
-
         if (hasAlreadyDownSize && startDowningTime + downSizeDuration < Time.time)
         {
             /*
              * geri buyume sadece zamana bagli oldugu icin playerlarin kim olduklari onemsiz
-             * eger kuculduysem ve 5 saniye gecdiyse beni buyult diyorum
-             * bu 5 saniye inspector'den belirlenebilir olacakti,
-             * yukarida degeri yazmissin buradaki sayiyla 5 yerine onu koymayi unutmussun, koydum ben.
+             * eger kuculduysem ve 8 saniye gectiyse beni buyult diyorum
+             * bu 8 saniye inspector'den belirlenebilir olacakti,
+             * yukarida degeri yazmissin buradaki sayiyla 8 yerine onu koymayi unutmussun, koydum ben.
              */
             UpSize();
         }
+
+
+
 
         if (!isPlayer1 && Input.GetKeyDown(KeyCode.Z))
         {
@@ -100,6 +105,26 @@ public class PlayerControl : MonoBehaviour
         if (hasAlreadyRotated && startDowningTime + downSizeDuration < Time.time)
         {
             NotRotate();
+        }
+
+
+
+
+
+        if (isPlayer1 && Input.GetKeyDown(KeyCode.P))
+        {
+            levelController.Reverse(2);
+            Debug.Log("p is pressed");
+        }
+        else if (!isPlayer1 && Input.GetKeyDown(KeyCode.X))
+        {
+            Debug.Log("x is pressed");
+            levelController.Reverse(1);
+        }
+        if (isInverse && startDowningTime + downSizeDuration < Time.time)
+        {
+            Debug.Log("reverse is over");
+            NotReverse();
         }
     }
 
@@ -142,4 +167,28 @@ public class PlayerControl : MonoBehaviour
         hasAlreadyRotated = false;
     }
 
+    bool isInverse;
+    public void Reverse()
+    {
+        
+        if (isInverse == false)
+        {
+            startDowningTime = Time.time;
+            isInverse = true;
+
+            if (isPlayer1)
+            {
+                rb2d.velocity = -(Vector2.right * Input.GetAxisRaw("Horizontal") * speed);
+            }
+            else if (!isPlayer1)
+            {
+                rb2d.velocity = -(Vector2.right * Input.GetAxisRaw("Horizontal2") * speed);
+            }
+        }
+    }
+
+    void NotReverse()
+    {
+        isInverse = false;
+    }
 }

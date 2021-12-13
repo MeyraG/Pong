@@ -11,11 +11,10 @@ public class ScoreControl : MonoBehaviour
 
     public bool isPlayer1;
     
+
     void Start()
-    {
-       
-        levelController = GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>();
-      
+    {    
+        levelController = GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>();    
     }
 
     void OnCollisionEnter2D(Collision2D collision)

@@ -109,13 +109,25 @@ public class LevelController : MonoBehaviour
 
     public void Rotate(int whichPlayer)
     {
-        if (whichPlayer ==1)
+        if (whichPlayer == 1)
         {
             player1.Rotate();
         }
-        else if (whichPlayer ==2)
+        else if (whichPlayer == 2)
         {
             player2.Rotate();
+        }
+    }
+
+    public void Reverse(int whichPlayer)
+    {
+        if (whichPlayer == 1)
+        {
+            player1.Reverse();
+        }
+        else if (whichPlayer == 2)
+        {
+            player2.Reverse();
         }
     }
 }
