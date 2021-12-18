@@ -15,16 +15,6 @@ public class FullScreen : MonoBehaviour
         float screenWidth = screenHeight / Screen.height * Screen.width;
         tempScale.x = screenWidth / spriteWidth;
         transform.localScale = tempScale;
-
         levelController = GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>();
-    }
-
-    
-    void Update()
-    {
-        // Bu bir comment'tir
-        // kolay gelsin sevgili meyra...
-
-        /*Tesekkurler Turkiye... her nerede yasiyor... ve yasatiliyorsan*/
     }
 }

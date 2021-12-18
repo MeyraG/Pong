@@ -23,7 +23,6 @@ public class LevelController : MonoBehaviour
     {
         levelController = GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>();
         scoreControl = GameObject.FindGameObjectWithTag("ScoreControl").GetComponent<ScoreControl>();
-        Debug.Log("Im here" + scoreControl);
     }
 
     public void RestartLevel()
@@ -85,16 +84,7 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    
-    /*
-     * Extra ozellikleri level controller uzerinden yapalim.
-     * playerController scriptinde o ozelligin playera ne yapacagi ile ilgili fonksiyon olsun
-     * sonra geri duzeltecek fonksiyon da playerControllerin icinde olsun.
-     * her player yapmak istedigi hamleyi ve kime yapacagini levelController'a soylesin
-     * levelController da ona gore ilgili fonksiyonu cagirsin.
-     *
-     * down size icin bunu yaptim. Bu fonksiyonun playerController da cagrildigi yeri de incele.
-     */
+
     public void DownSize(int whichPlayer)
     {
         if (whichPlayer == 1)

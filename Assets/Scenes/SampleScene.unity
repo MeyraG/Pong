@@ -483,7 +483,7 @@ MonoBehaviour:
   ball: {fileID: 1476924804}
   player1: {fileID: 882411649}
   player2: {fileID: 1097254988}
-  totalRound: 2
+  totalRound: 4
   currentRound: 0
   isPlaying: 1
   gameOverText: {fileID: 1961393093}
@@ -1259,7 +1259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99fec7fe68f5f4745b06ad90d3338633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 7
 --- !u!1 &1754567961
 GameObject:
   m_ObjectHideFlags: 0
