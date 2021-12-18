@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 16484572}
   m_Layer: 0
   m_Name: ScoreZone1
-  m_TagString: ScoreZone2
+  m_TagString: ScoreControl
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -239,7 +239,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 377708030}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 490915552}
   m_Layer: 5
   m_Name: Score2
-  m_TagString: ScoreControl
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -483,7 +483,7 @@ MonoBehaviour:
   ball: {fileID: 1476924804}
   player1: {fileID: 882411649}
   player2: {fileID: 1097254988}
-  totalRound: 4
+  totalRound: 2
   currentRound: 0
   isPlaying: 1
   gameOverText: {fileID: 1961393093}
@@ -600,7 +600,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer1: 1
   speed: 7
-  downSizeDuration: 5
+  featureDuration: 8
   score: 0
 --- !u!50 &882411650
 Rigidbody2D:
@@ -693,7 +693,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998625115}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -762,7 +762,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer1: 0
   speed: 7
-  downSizeDuration: 5
+  featureDuration: 8
   score: 0
 --- !u!61 &1097254989
 BoxCollider2D:
@@ -889,7 +889,7 @@ GameObject:
   - component: {fileID: 1121111920}
   m_Layer: 5
   m_Name: Score1
-  m_TagString: ScoreControl
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1259,7 +1259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99fec7fe68f5f4745b06ad90d3338633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 5
 --- !u!1 &1754567961
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,7 +1491,7 @@ GameObject:
   - component: {fileID: 1906130218}
   m_Layer: 0
   m_Name: ScoreZone2
-  m_TagString: ScoreZone1
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

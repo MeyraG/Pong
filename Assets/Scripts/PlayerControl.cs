@@ -13,8 +13,8 @@ public class PlayerControl : MonoBehaviour
     LevelController levelController;
 
     bool hasAlreadyDownSize;
-    float startDowningTime;
-    public float downSizeDuration = 8;
+    float startTime;
+    public float featureDuration = 8;
 
     public int score;
 
@@ -46,19 +46,42 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
+        Move();
+        DownFeature();
+        RotateFeature();
+        ReverseFeature();
+    }
+
+    private void Move()
+    {
         if (isPlayer1)
         {
-            rb2d.velocity = Vector2.right * Input.GetAxisRaw("Horizontal") * speed;
+            if (isInverse)
+            {
+                rb2d.velocity = -(Vector2.right * Input.GetAxisRaw("Horizontal") * speed);
+            }
+            else
+            {
+                rb2d.velocity = Vector2.right * Input.GetAxisRaw("Horizontal") * speed;
+            }
+
         }
         else
         {
-            rb2d.velocity = Vector2.right * Input.GetAxisRaw("Horizontal2") * speed;
+            if (isInverse)
+            {
+                rb2d.velocity = -(Vector2.right * Input.GetAxisRaw("Horizontal2") * speed);
+            }
+            else
+            {
+                rb2d.velocity = Vector2.right * Input.GetAxisRaw("Horizontal2") * speed;
+            }
         }
 
+    }
 
-
-
-
+    void DownFeature()
+    {
         if (!isPlayer1 && Input.GetKeyDown(KeyCode.Q)) //Pressed by Player2
         {
             /*
@@ -79,7 +102,7 @@ public class PlayerControl : MonoBehaviour
             levelController.DownSize(2);
         }
 
-        if (hasAlreadyDownSize && startDowningTime + downSizeDuration < Time.time)
+        if (hasAlreadyDownSize && startTime + featureDuration < Time.time)
         {
             /*
              * geri buyume sadece zamana bagli oldugu icin playerlarin kim olduklari onemsiz
@@ -90,8 +113,10 @@ public class PlayerControl : MonoBehaviour
             UpSize();
         }
 
+    }
 
-
+    void RotateFeature()
+    {
 
         if (!isPlayer1 && Input.GetKeyDown(KeyCode.Z))
         {
@@ -102,14 +127,14 @@ public class PlayerControl : MonoBehaviour
             levelController.Rotate(2);
         }
 
-        if (hasAlreadyRotated && startDowningTime + downSizeDuration < Time.time)
+        if (hasAlreadyRotated && startTime + featureDuration < Time.time)
         {
             NotRotate();
         }
+    }
 
-
-
-
+    void ReverseFeature()
+    {
 
         if (isPlayer1 && Input.GetKeyDown(KeyCode.P))
         {
@@ -121,14 +146,12 @@ public class PlayerControl : MonoBehaviour
             Debug.Log("x is pressed");
             levelController.Reverse(1);
         }
-        if (isInverse && startDowningTime + downSizeDuration < Time.time)
+        if (isInverse && startTime + featureDuration < Time.time)
         {
             Debug.Log("reverse is over");
             NotReverse();
         }
     }
-
-
     public void DownSize()
     {
         /*
@@ -137,7 +160,7 @@ public class PlayerControl : MonoBehaviour
          */
         if (!hasAlreadyDownSize)
         {
-            startDowningTime = Time.time;
+            startTime = Time.time;
             transform.localScale = transform.localScale / 3;
             hasAlreadyDownSize = true;
         }
@@ -155,7 +178,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (hasAlreadyRotated == false)
         {
-            startDowningTime = Time.time;
+            startTime = Time.time;
             transform.rotation = Quaternion.Euler(0, 0, 90);
             hasAlreadyRotated = true;
         }
@@ -173,17 +196,9 @@ public class PlayerControl : MonoBehaviour
         
         if (isInverse == false)
         {
-            startDowningTime = Time.time;
+            startTime = Time.time;
             isInverse = true;
 
-            if (isPlayer1)
-            {
-                rb2d.velocity = -(Vector2.right * Input.GetAxisRaw("Horizontal") * speed);
-            }
-            else if (!isPlayer1)
-            {
-                rb2d.velocity = -(Vector2.right * Input.GetAxisRaw("Horizontal2") * speed);
-            }
         }
     }
 

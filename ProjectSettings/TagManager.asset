@@ -5,10 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ball
-  - ScoreZone1
-  - ScoreZone2
   - LevelController
   - ScoreControl
+  - BeyzaControl
   layers:
   - Default
   - TransparentFX

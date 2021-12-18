@@ -23,6 +23,7 @@ public class LevelController : MonoBehaviour
     {
         levelController = GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>();
         scoreControl = GameObject.FindGameObjectWithTag("ScoreControl").GetComponent<ScoreControl>();
+        Debug.Log("Im here" + scoreControl);
     }
 
     public void RestartLevel()
@@ -54,9 +55,9 @@ public class LevelController : MonoBehaviour
     }
 
     void AllGameOver()
-    {   
-        isPlaying = false;
+    {  
         currentRound = 0;
+        gameOverText.gameObject.SetActive(true);
 
         if (player1.score > player2.score)
         {
@@ -80,8 +81,7 @@ public class LevelController : MonoBehaviour
         {
             scoreControl.ResetScore();
             RestartLevel();
-            gameOverText.gameObject.SetActive(false);
-            
+            gameOverText.gameObject.SetActive(false);         
         }
     }
 

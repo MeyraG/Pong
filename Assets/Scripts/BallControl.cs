@@ -35,11 +35,11 @@ public class BallControl : MonoBehaviour
         gameObject.transform.position = Vector3.zero;
         StartingForce();
     }
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "ScoreZone1" || collision.gameObject.tag == "ScoreZone2")
-        {           
-            GameOver();         
-        }
-    }
+    //public void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.tag == "ScoreZone1" || collision.gameObject.tag == "ScoreZone2")
+    //    {           
+    //        GameOver();         
+    //    }
+    //}
 }

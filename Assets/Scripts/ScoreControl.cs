@@ -28,7 +28,8 @@ public class ScoreControl : MonoBehaviour
         {
             levelController.player2.score++;
             scoreText.text = levelController.player2.score.ToString();
-        }      
+        }
+        levelController.ball.GameOver();
     }
 
     public void ResetScore()
